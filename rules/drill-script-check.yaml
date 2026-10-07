@@ -1,0 +1,208 @@
+# 应急演练脚本核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库的诚实说明：**excerpt 一律不是引文。**
+#   本插件核对的是"应急演练脚本"的**要素齐备与算术自洽**：
+#     演练阶段与脚本内容是否填写、指挥人与参演人员是否明确、
+#     响应级别是否在册、所需资源是否列明、各环节计划时长合计是否等于演练总时长、
+#     关键节点是否写明判定条件、环节序号是否重复、是否残留模板占位符。
+#   其规范载体是**《生产安全事故应急演练基本规范》（AQ/T 9007—2019）**、
+#   **《生产安全事故应急条例》（国务院令第708号）**与各单位的应急预案与演练管理办法。
+#   **核查未取得这些文件的逐字条文**，故每条 excerpt 如实写明，kind 降为 derived-from-principle（封顶 warn）。
+#
+# ✅ 标准代号已更正（2026-10-07，见 rules/evidence/clause-verification-yj9007.md）：
+#   **应急管理部公告 2025 年第 1 号**（成文 2025-01-24、发布 2025-01-26）逐字：
+#   「现将《生产安全事故应急演练评估规范》等 **11 项行业标准类别由安全生产行业标准
+#    调整为减灾救灾与综合性应急管理行业标准，代号由"AQ"调整为"YJ"**，
+#    **标准顺序号、年代号和内容保持不变**。」
+#   附件第 2 项逐字：**现标准编号 YJ/T 9007-2019　原标准编号 AQ/T 9007-2019**
+#   （标准名称：**生产安全事故应急演练基本规范**）。
+#   ⇒ 本规则库原先引 **AQ/T 9007—2019**，**已全部更正为 YJ/T 9007—2019**。
+#   ⚠️ **内容未变**（公告明文"内容保持不变"），故 `excerpt`、`kind`、`severity` **一律未动**。
+
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判定演练是否真实有效、
+#   响应分级是否恰当、处置措施是否正确、演练是否达到预期目标**。
+#   那需要结合预案、现场记录与评估报告判断，是应急管理人员的实质工作。
+#   → **本插件不内置任何响应分级**：分级（一般／较大／重大／特别重大，
+#     或本单位的Ⅰ—Ⅳ级）随预案体系变化，台账自己写的是哪一级，本插件只核对它是否在册。
+#   → **响应级别清单（levels）与演练类型清单（types）都出厂为空。**
+
+plugin: dsh-drill-script-check
+version: "2026.1"
+
+rules:
+  - id: DR-001
+    title: 每个环节都应填写阶段与脚本内容
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练脚本内容的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: presenceAny
+          fields: ["phase","script"]
+          fix: 补填演练阶段与脚本内容；本条只核对是否填写，不判断处置是否正确
+    note: >-
+      演练脚本的**最小单位**是"某阶段做什么"：缺其一，
+      这份脚本就无法指导现场，也无法在演练后对账。本次未取得明文条号，故封顶 warn。
+      本条只核对"至少填了一个"，**不判断该处置动作是否正确、是否符合预案**。
+
+  - id: DR-002
+    title: 每个环节都应明确指挥人
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练组织与指挥的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: commander
+          fix: 补填指挥人；本条只核对是否明确，不判断指挥关系是否恰当
+    note: >-
+      应急演练的核心是**指挥链条**：环节若不写明谁指挥，
+      演练就退化成各演各的，也练不出协同。本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条只核对指挥人栏是否填写，**不判断该指挥关系是否符合预案、是否与实际岗位一致**。
+
+  - id: DR-003
+    title: 响应级别应使用本机构预案口径的取值
+    severity: info
+    basis:
+      document: 本单位应急预案体系（本机构配置）
+      number: 无统一标准（本条依据为本机构预案的分级口径）
+      clause: 关于响应分级的条款（本次未取得条号）
+      excerpt: 本条依据为本机构配置的口径，不存在可引用的标准条文；本规则库不伪造引文。
+      kind: institutional-configuration
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: enum
+          field: level
+          values: []
+    note: >-
+      values 出厂为空，表示**未配置**，本条进 skipped。
+      依据说明：**响应分级由本单位应急预案规定** —— 有的按一般／较大／重大／特别重大，
+      有的按本单位Ⅰ—Ⅳ级，名称与档数各不相同。本插件**不内置任何分级体系**，
+      也**不判断某一事件应当启动哪一级响应** —— 那是应急指挥的判断。
+      本条只核对所填值是否在册。
+
+  - id: DR-004
+    title: 有脚本动作的环节应列明所需资源
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练保障与资源的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: conditionalPresence
+          conditionField: script
+          requiredFields: ["resource"]
+          conditionValues: []
+          fix: 补填所需资源；本条只核对是否列明，不判断资源是否充足
+    note: >-
+      脚本动作若不说需要什么装备物资，演练现场就只能临时凑 ——
+      **而"资源不到位"恰恰是演练最常见的失败原因**。本次未取得明文条号，故封顶 warn。
+      本条**只在脚本内容已填写时**要求资源栏。
+      本条只核对资源栏是否填写，**不判断所列资源是否充足、是否与实际配备一致**。
+
+  - id: DR-005
+    title: 各环节计划时长合计应等于演练总时长
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练时间安排的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: sum
+          field: durationMin
+          headerField: totalDurationMin
+          tolerance: 0.01
+    note: >-
+      各环节时长之和与演练总时长相符，是脚本时间安排的**算术前提**：
+      不相等说明漏了环节或某个环节的时长有误。本次未取得明文条号，故封顶 warn。
+      本条的总额取自**材料表头**的演练总时长（引擎会先在行内找，再回落到表头）。
+      本条只做加法核对，**不判断时间安排是否合理、是否够用**。
+
+  - id: DR-006
+    title: 关键节点应写明判定条件
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练评估与节点的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: checkpoint
+          fix: 补填关键节点与判定条件；本条只核对是否写明，不判断条件是否合理
+    note: >-
+      关键节点若不写判定条件（例如"泄漏得到控制""人员全部撤离"），
+      演练评估就只能凭印象打分。本次未取得明文条号，故封顶 warn。
+      本条只核对判定条件栏是否填写，**不判断该条件是否可观测、是否恰当**。
+
+  - id: DR-007
+    title: 环节序号不应在脚本内重复
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练脚本结构的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: unique
+          field: stepNo
+    note: >-
+      序号唯一是"每个环节只被登记一次"的**前提条件**：
+      序号重复会让时长合计与环节统计失真。本次未取得明文条号，故封顶 warn。
+      注意：同一阶段分多个动作各占一行是正常的，此时应使用不同的序号。
+
+  - id: DR-008
+    title: 脚本应声明演练名称与组织单位
+    severity: warn
+    basis:
+      document: 《生产安全事故应急演练基本规范》
+      number: YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文）
+      clause: 关于演练计划与组织的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.mem.gov.cn/
+    params:
+        check:
+          kind: headerPresence
+          fields: ["drillName","organizer"]
+    note: >-
+      脚本若不写明演练名称与组织单位，就无法与演练计划、评估报告对应。
+      本次未取得明文条号，故封顶 warn。
+      配置项 drillName 对应演练名称，organizer 对应组织单位。
+      若本机构表式还在表头记录演练日期与地点，把 plannedAt、venue 加进 fields 即可。
+
+disabled: []
