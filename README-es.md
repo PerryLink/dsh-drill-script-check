@@ -1,4 +1,24 @@
-# dsh-drill-script-check
+# dsh-drill-script-check — Verificación de la completitud y la aritmética de un guion de simulacro de emergencia
+
+`dsh-drill-script-check` lee un guion de simulacro de emergencia —la cabecera del simulacro más una fila por etapa— y comprueba la completitud y la aritmética de ese guion: que cada etapa registre su fase de simulacro o su contenido de guion, que nombre a un responsable de mando, que el nivel de respuesta proceda del vocabulario que usted configure, que una etapa con acción de guion enumere los recursos que necesita, que las duraciones de las etapas sumen la duración prevista del simulacro, que un punto clave declare su condición de juicio, que no se repita ningún número de etapa y que la cabecera nombre el simulacro y la entidad organizadora.
+
+## Qué responde
+
+| Usted pregunta | Qué responde |
+|---|---|
+| Una etapa no tiene rellenas ni la fase del simulacro ni el contenido del guion. ¿Se informa de ello? | Sí. `DR-001` pide juntas las columnas `phase` y `script` e informa de la etapa en la que ninguna de las dos está rellena: basta con una de ellas para pasar. Comprueba que la columna esté rellena, no si la acción es correcta o concuerda con su plan de emergencia. |
+| He rellenado el nivel de respuesta, pero `DR-003` se informa a sí misma en `skipped`. ¿Por qué? | `DR-003` compara la columna `level` con el vocabulario de `values`, que viene vacío, así que hasta que configure sus propios niveles la regla informa de que no pudo ejecutarse en lugar de pasar en silencio. Solo comprueba que el valor figure en su lista: nunca juzga qué nivel debería activar un suceso. |
+| Una etapa meramente informativa no enumera equipo. ¿Se señala? | No. `DR-004` pide la columna `resource` solo cuando el contenido `script` de esa etapa está relleno, así que a una etapa informativa no se le piden medios. Comprueba que los recursos estén enumerados, no que sean suficientes o que coincidan con lo realmente disponible. |
+| Las duraciones de las etapas no suman la duración prevista del simulacro. ¿Se detecta? | Sí. `DR-005` suma los valores de `durationMin` de las etapas y compara ese total con `totalDurationMin`, que toma de la cabecera del material: busca primero dentro de la fila y recurre a la cabecera. Es solo una comprobación de suma: no juzga si el reparto del tiempo es razonable o suficiente. |
+| ¿Qué debe contener la columna de punto clave de una etapa? | `DR-006` exige que la columna `checkpoint` —el punto clave junto con su condición de juicio— esté rellena en la etapa. Comprueba que se haya escrito algo ahí, no que la condición sea observable o adecuada. |
+| Una fase se reparte en tres filas de acción y dos de ellas llevan el mismo número de etapa. | `DR-007` informa del `stepNo` repetido, porque la repetición hace poco fiables el total de duraciones y el recuento de etapas. Repartir una fase en varias filas de acción es normal: dé a cada fila su propio número de etapa. |
+
+## Normas que sigue
+
+| Documento | Número | Reglas que lo citan |
+|---|---|---|
+| 《生产安全事故应急演练基本规范》 | YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文） | DR-001, DR-002, DR-004, DR-005, DR-006, DR-007, DR-008 |
+| 本单位应急预案体系（本机构配置） | 无统一标准（本条依据为本机构预案的分级口径） | DR-003 |
 
 **Boundary:** this plugin checks an **应急演练脚本** for completeness and arithmetic — that each step names its
 phase and script content, that it names a commander, that the response level comes from your vocabulary, that a

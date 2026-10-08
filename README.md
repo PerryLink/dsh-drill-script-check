@@ -1,4 +1,24 @@
-# dsh-drill-script-check
+# dsh-drill-script-check — Emergency drill script completeness and arithmetic check
+
+`dsh-drill-script-check` reads one emergency drill script — the drill header plus one row per step — and checks that script's own completeness and arithmetic: that each step records its drill phase or its script content, that it names a commander, that the response level comes from the vocabulary you configure, that a step with a script action lists the resources it needs, that the step durations total the drill's planned duration, that a key checkpoint states its judgement condition, that no step number is repeated, and that the header names the drill and the organising unit.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| A step has neither its drill phase nor its script content filled in. Is that reported? | Yes. `DR-001` asks for the `phase` and `script` columns together and reports the step where neither of the two is filled — one of them is enough to pass. It checks that the column is filled, not whether the action is correct or matches your emergency plan. |
+| I filled in the response level, but `DR-003` reports itself in `skipped`. Why? | `DR-003` compares the `level` column with the vocabulary in `values`, which ships empty, so until you configure your own levels the rule reports that it could not run instead of passing silently. It only checks that the value is one of yours — it never judges which level an event should trigger. |
+| A step that is purely informational lists no equipment. Is that flagged? | No. `DR-004` asks for the `resource` column only when that step's `script` content is filled, so an informational step is not asked for equipment. It checks that the resources are listed, not that they are sufficient or that they match what is actually on site. |
+| The step durations do not add up to the drill's planned duration. Will the check catch it? | Yes. `DR-005` adds the `durationMin` values of the steps and compares that total with `totalDurationMin`, which it takes from the header of the material — it looks inside the row first and falls back to the header. It is an addition check only: it does not judge whether the time arrangement is reasonable or sufficient. |
+| What must the checkpoint column of a step contain? | `DR-006` requires the `checkpoint` column — the key node together with its judgement condition — to be filled on the step. It checks that something has been written there, not that the condition is observable or appropriate. |
+| One phase is split over three action rows and two of them carry the same step number. | `DR-007` reports the repeated `stepNo`, because a repeat makes the duration total and the step count unreliable. Splitting one phase into several action rows is normal — give each row its own step number. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《生产安全事故应急演练基本规范》 | YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文） | DR-001, DR-002, DR-004, DR-005, DR-006, DR-007, DR-008 |
+| 本单位应急预案体系（本机构配置） | 无统一标准（本条依据为本机构预案的分级口径） | DR-003 |
 
 **Boundary:** this plugin checks an **应急演练脚本** for completeness and arithmetic — that each step names its
 phase and script content, that it names a commander, that the response level comes from your vocabulary, that a
