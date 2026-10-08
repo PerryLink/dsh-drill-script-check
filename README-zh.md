@@ -41,8 +41,7 @@ right, whether the actions were correct, or whether the drill met its objectives
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-drill-script-check
 dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
 ```
 
