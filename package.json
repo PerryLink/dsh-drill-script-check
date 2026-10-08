@@ -1,6 +1,6 @@
 {
   "name": "dsh-drill-script-check",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "应急演练脚本核对（按阶段、响应分级、指挥与资源要素核对脚本齐备，仅提示差异，不作出定性结论）",
   "type": "module",
   "main": "lib/index.mjs",
