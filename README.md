@@ -4,6 +4,13 @@
 
 `dsh-drill-script-check` reads one emergency drill script — the drill header plus one row per step — and checks that script's own completeness and arithmetic: that each step records its drill phase or its script content, that it names a commander, that the response level comes from the vocabulary you configure, that a step with a script action lists the resources it needs, that the step durations total the drill's planned duration, that a key checkpoint states its judgement condition, that no step number is repeated, and that the header names the drill and the organising unit.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-drill-script-check
+dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-drill-script-check: real output over its DR-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-drill-script-check/main/docs/assets/dsh-drill-script-check-hero.png)
@@ -79,13 +86,6 @@ applies a versioned rule pack, and returns a report.
 | `DR-006` | a checkpoint states its judgement condition | warn | principle |
 | `DR-007` | step numbers are unique | warn | principle |
 | `DR-008` | the script names its drill and organiser | warn | principle |
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-drill-script-check
-dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
-```
 
 ## Configuration
 

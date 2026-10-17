@@ -4,6 +4,13 @@
 
 `dsh-drill-script-check` 读取一份应急演练脚本——演练表头加每个环节一行——核对这份脚本自身的齐备与算术：每个环节是否填写演练阶段或脚本内容、是否明确指挥人、响应级别是否取自你配置的口径、有脚本动作的环节是否列明所需资源、各环节计划时长合计是否等于演练总时长、关键节点是否写明判定条件、环节序号是否重复、表头是否声明演练名称与组织单位。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-drill-script-check
+dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-drill-script-check: real output over its DR-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-drill-script-check/main/docs/assets/dsh-drill-script-check-hero.png)
@@ -67,13 +74,6 @@ right, whether the actions were correct, or whether the drill met its objectives
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-drill-script-check
-dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
-```
 
 ## Configuration
 

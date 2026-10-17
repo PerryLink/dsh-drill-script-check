@@ -4,6 +4,13 @@
 
 `dsh-drill-script-check` एक आपातकालीन अभ्यास स्क्रिप्ट पढ़ता है — अभ्यास का हेडर और प्रत्येक चरण की एक पंक्ति — और उसी स्क्रिप्ट की पूर्णता तथा अंकगणित की जाँच करता है: क्या प्रत्येक चरण अपनी अभ्यास-चरण (phase) या script सामग्री दर्ज करता है, क्या वह किसी कमांडर (commander) का नाम देता है, क्या प्रतिक्रिया स्तर आपके द्वारा कॉन्फ़िगर की गई सूची से आता है, क्या script क्रिया वाला चरण अपने आवश्यक संसाधन गिनाता है, क्या चरणों की अवधियों का जोड़ अभ्यास की नियोजित अवधि के बराबर है, क्या कोई मुख्य बिंदु अपनी निर्णय-शर्त लिखता है, क्या चरण-क्रमांक दोहराए नहीं गए हैं, और क्या हेडर अभ्यास का नाम तथा आयोजक संस्था बताता है।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-drill-script-check
+dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-drill-script-check: real output over its DR-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-drill-script-check/main/docs/assets/dsh-drill-script-check-hero.png)
@@ -67,13 +74,6 @@ right, whether the actions were correct, or whether the drill met its objectives
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-drill-script-check
-dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
-```
 
 ## Configuration
 

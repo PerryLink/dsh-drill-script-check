@@ -4,6 +4,13 @@
 
 `dsh-drill-script-check` lee un guion de simulacro de emergencia —la cabecera del simulacro más una fila por etapa— y comprueba la completitud y la aritmética de ese guion: que cada etapa registre su fase de simulacro o su contenido de guion, que nombre a un responsable de mando, que el nivel de respuesta proceda del vocabulario que usted configure, que una etapa con acción de guion enumere los recursos que necesita, que las duraciones de las etapas sumen la duración prevista del simulacro, que un punto clave declare su condición de juicio, que no se repita ningún número de etapa y que la cabecera nombre el simulacro y la entidad organizadora.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-drill-script-check
+dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
+```
+
 ## Cómo se ve la salida
 
 ![Terminal demo of dsh-drill-script-check: real output over its DR-007 fixture](https://raw.githubusercontent.com/PerryLink/dsh-drill-script-check/main/docs/assets/dsh-drill-script-check-hero.png)
@@ -67,13 +74,6 @@ right, whether the actions were correct, or whether the drill met its objectives
 ## What it does
 
 La tabla de reglas, los campos y el comportamiento detallado están en [README.md](README.md#what-it-does) (versión principal en inglés). El plugin sólo enumera divergencias literales frente a las cláusulas citadas e indica en `skipped` cada comprobación que no pudo ejecutarse.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-drill-script-check
-dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
-```
 
 ## Configuration
 
