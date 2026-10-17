@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-drill-script-check-hero.png",
+    "kind": "hero",
+    "alt": "dsh-drill-script-check terminal output",
+    "caption": "Real dsh-drill-script-check checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-drill-script-check-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-drill-script-check terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
