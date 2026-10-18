@@ -41,23 +41,20 @@ dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份 **应急演练脚本** 的齐备性与算术——每个环节是否写明演练阶段与脚本内容，是否明确指挥人，响应级别是否取自你配置的取值口径，有脚本动作的环节是否列明所需资源，各环节计划时长合计是否等于演练总时长，关键节点是否写明判定条件，环节序号是否唯一，以及脚本是否写明演练名称与组织单位。它**不**判定演练是否逼真、是否有效，响应级别是否正确，处置动作是否正确，也不判定演练是否达到目标。
 
-> ### ⚠️ Read this before trusting a citation in the report
+> ### ⚠️ 在采信报告中的引文之前，请先读这一段（以英文原文为准）
 >
-> **Every `excerpt` in this plugin's rule pack says, in so many words, that the clause text was not
-> obtained.** The regime lives in AQ/T 9007—2019, 《生产安全事故应急条例》(国务院令第708号) and each
-> institution's emergency plans. The verification pass could not retrieve verbatim clause text, so rather than
-> paraphrase a quotation the pack states the gap in the `excerpt` field itself and puts the honest reasoning in
-> `note`. Every rule is therefore `warn` or `info`, and a test asserts that no rule claims a quotation it does
-> not have. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind` to
-> `direct`.**
+> **本插件规则包中的每一条 `excerpt` 都明确写着：本次未取得条款原文。** 该制度见诸
+> AQ/T 9007—2019、《生产安全事故应急条例》（国务院令第708号）以及各机构的应急预案。核验环节未能
+> 取得逐字条款原文，因此规则包没有转述引文，而是在 `excerpt` 字段本身写明这一缺口，并将诚实的
+> 推理写入 `note`。因此每条规则都是 `warn` 或 `info`，并有测试断言没有任何规则声称拥有它并不
+> 拥有的引文。**取得文本后，应将每条 `excerpt` 替换为真实条款，并将 `kind` 提升为 `direct`。**
 >
-> **No response-level scale is built in.** Levels differ between plan systems — general / larger / major /
-> especially major, or a unit's own Ⅰ–Ⅳ — so `DR-003` reports itself in `skipped` until you configure your
-> vocabulary, and it never judges which level an event should trigger. That is the incident commander's call.
+> **未内置任何响应分级。** 不同预案体系的分级不同——一般 / 较大 / 重大 / 特别重大，或单位自有的
+> Ⅰ–Ⅳ 级——因此在你配置词汇表之前，`DR-003` 会在 `skipped` 中自行报告，而且它从不判断一个事件
+> 应触发哪一级别。那应由事故指挥官决定。
 >
-> The resource rule fires only when a script action is present, so a step that is purely informational is not
-> asked for equipment. And the duration total is read from the header, where a drill's planned length normally
-> lives.
+> 资源规则只在存在脚本动作时才触发，因此纯粹信息性的步骤不会被要求列出装备。而时长合计是从表头
+> 读取的，演练的计划时长通常就写在那里。
 
 ## Compatibility
 
