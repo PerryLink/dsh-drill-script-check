@@ -39,12 +39,7 @@ dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
 | 《生产安全事故应急演练基本规范》 | YJ/T 9007—2019（原 AQ/T 9007—2019，2025 年第 1 号公告调整代号；本次未取得条文） | DR-001, DR-002, DR-004, DR-005, DR-006, DR-007, DR-008 |
 | 本单位应急预案体系（本机构配置） | 无统一标准（本条依据为本机构预案的分级口径） | DR-003 |
 
-**Boundary:** this plugin checks an **应急演练脚本** for completeness and arithmetic — that each step names its
-phase and script content, that it names a commander, that the response level comes from your vocabulary, that a
-step with an action lists the resources it needs, that the step durations total the drill's planned duration, that
-key checkpoints state their judgement condition, that step numbers are unique, and that the script names its drill
-and organiser. It does **not** decide whether a drill was realistic or effective, whether the response level was
-right, whether the actions were correct, or whether the drill met its objectives.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份 **应急演练脚本** 的齐备性与算术——每个环节是否写明演练阶段与脚本内容，是否明确指挥人，响应级别是否取自你配置的取值口径，有脚本动作的环节是否列明所需资源，各环节计划时长合计是否等于演练总时长，关键节点是否写明判定条件，环节序号是否唯一，以及脚本是否写明演练名称与组织单位。它**不**判定演练是否逼真、是否有效，响应级别是否正确，处置动作是否正确，也不判定演练是否达到目标。
 
 > ### ⚠️ Read this before trusting a citation in the report
 >
