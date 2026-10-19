@@ -30,6 +30,35 @@ Saída real deste plugin sobre o seu próprio fixture de teste `DR-007` — não
 A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 
+#### Saída detalhada
+
+**Ferramenta** `drill_script_check`
+
+**Entrada**
+
+~~~json
+{"rows":[{"序号":"1","演练阶段":"","脚本内容":"","指挥人":"张指挥", ...}]}
+~~~
+ 
+**Saída**
+
+~~~json
+{
+  "id": "dsh-drill-script-check.DR-001.de09b5a6",
+  "ruleId": "DR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "phase"
+  },
+  "found": "第 1 行 phase、script 都为空",
+  "expected": "phase、script 至少应填写一项",
+  "fix": "补填演练阶段与脚本内容；本条只核对是否填写，不判断处置是否正确"
+}
+~~~
+
+*Observado em `dsh-drill-script-check/tests/fixtures/DR-001/DR-001-unsafe.json; dsh-drill-script-check/tests/fixtures/DR-001/cases.json; dsh-drill-script-check/rules/drill-script-check.yaml; dsh-drill-script-check/tests/index.test.ts`*
+
 | Você pergunta | O que ele responde |
 |---|---|
 | Uma etapa não tem preenchidas nem a fase do simulacro nem o conteúdo do guião. Isso é reportado? | Sim. `DR-001` pede em conjunto as colunas `phase` e `script` e reporta a etapa em que nenhuma das duas está preenchida — basta uma delas para passar. Verifica que a coluna está preenchida, não se a ação está correta ou conforme ao seu plano de emergência. |

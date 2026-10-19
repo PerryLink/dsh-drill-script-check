@@ -28,6 +28,35 @@ dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `drill_script_check`
+
+**Input**
+
+~~~json
+{"rows":[{"序号":"1","演练阶段":"","脚本内容":"","指挥人":"张指挥", ...}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-drill-script-check.DR-001.de09b5a6",
+  "ruleId": "DR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "phase"
+  },
+  "found": "第 1 行 phase、script 都为空",
+  "expected": "phase、script 至少应填写一项",
+  "fix": "补填演练阶段与脚本内容；本条只核对是否填写，不判断处置是否正确"
+}
+~~~
+
+*Observed from `dsh-drill-script-check/tests/fixtures/DR-001/DR-001-unsafe.json; dsh-drill-script-check/tests/fixtures/DR-001/cases.json; dsh-drill-script-check/rules/drill-script-check.yaml; dsh-drill-script-check/tests/index.test.ts`*
+
 | You ask | What it answers |
 |---|---|
 | A step has neither its drill phase nor its script content filled in. Is that reported? | Yes. `DR-001` asks for the `phase` and `script` columns together and reports the step where neither of the two is filled — one of them is enough to pass. It checks that the column is filled, not whether the action is correct or matches your emergency plan. |

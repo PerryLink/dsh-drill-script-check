@@ -30,6 +30,35 @@ dsh --profile <name> --dump-config | grep 'dsh-drill-script-check'
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
 
+#### 详细输出
+
+**工具** `drill_script_check`
+
+**输入**
+
+~~~json
+{"rows":[{"序号":"1","演练阶段":"","脚本内容":"","指挥人":"张指挥", ...}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-drill-script-check.DR-001.de09b5a6",
+  "ruleId": "DR-001",
+  "severity": "warn",
+  "locator": {
+    "row": 1,
+    "field": "phase"
+  },
+  "found": "第 1 行 phase、script 都为空",
+  "expected": "phase、script 至少应填写一项",
+  "fix": "补填演练阶段与脚本内容；本条只核对是否填写，不判断处置是否正确"
+}
+~~~
+
+*来源 `dsh-drill-script-check/tests/fixtures/DR-001/DR-001-unsafe.json; dsh-drill-script-check/tests/fixtures/DR-001/cases.json; dsh-drill-script-check/rules/drill-script-check.yaml; dsh-drill-script-check/tests/index.test.ts`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 某个环节的演练阶段和脚本内容都没填，会被报出吗？ | 会。`DR-001` 同时要求 `phase` 与 `script` 两栏，两栏都空才报出该行——填了其中一栏即通过。它只核对这一栏是否填写，不判断该处置动作是否正确、是否符合预案。 |
