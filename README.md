@@ -91,21 +91,9 @@ right, whether the actions were correct, or whether the drill met its objectives
 
 > ### ⚠️ Read this before trusting a citation in the report
 >
-> **Every `excerpt` in this plugin's rule pack says, in so many words, that the clause text was not
-> obtained.** The regime lives in AQ/T 9007—2019, 《生产安全事故应急条例》(国务院令第708号) and each
-> institution's emergency plans. The verification pass could not retrieve verbatim clause text, so rather than
-> paraphrase a quotation the pack states the gap in the `excerpt` field itself and puts the honest reasoning in
-> `note`. Every rule is therefore `warn` or `info`, and a test asserts that no rule claims a quotation it does
-> not have. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind` to
-> `direct`.**
+> **`excerpt` status is per rule, not uniform.** Some rules quote the clause verbatim (`kind: direct`), some are derived from the principle of the cited articles (`kind: derived-from-principle`, capped at `warn`), and some use thresholds your institution configures (`kind: institutional-configuration`, capped at `info`). The pack never paraphrases a quotation: when the text was not obtained, the `excerpt` field says so and the reasoning lives in `note`; a test asserts that no rule claims a quotation it does not have. **For any rule still marked as not obtained, replace the `excerpt` with the real clause and raise `kind` to `direct` once the text is in hand.**
 >
-> **No response-level scale is built in.** Levels differ between plan systems — general / larger / major /
-> especially major, or a unit's own Ⅰ–Ⅳ — so `DR-003` reports itself in `skipped` until you configure your
-> vocabulary, and it never judges which level an event should trigger. That is the incident commander's call.
->
-> The resource rule fires only when a script action is present, so a step that is purely informational is not
-> asked for equipment. And the duration total is read from the header, where a drill's planned length normally
-> lives.
+> The conclusion is the reviewer's: this plugin lists differences it can point to in the material and does not decide facts or compliance.
 
 ## Compatibility
 
