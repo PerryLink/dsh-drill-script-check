@@ -1,6 +1,6 @@
 # dsh-drill-script-check — 应急演练脚本核对
 
-## 快速试跑（1 分钟）
+### 快速试跑（1 分钟）
 
 ```bash
 node samples/quickstart/run.mjs --check
