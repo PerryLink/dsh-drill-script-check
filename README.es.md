@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-dark.svg">
-  <img src="docs/assets/dsh-drill-script-check-flow-light.svg" width="100%" alt="Flujo de dsh-drill-script-check: material JSON/YAML → drill_script_check → paquete de reglas DR-001…DR-008 → hallazgos (found/expected/fix) → informe (summary/skipped)">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-drill-script-check-hero-en-light.webp" width="100%" alt="Banner de dsh-drill-script-check: a la izquierda el nombre del plugin y dos líneas de valor; a la derecha un guion de simulacro (cabecera con nombre, entidad organizadora y duración prevista; tres etapas, la tercera sin fase ni contenido, ambas celdas rodeadas) que lleva a una tarjeta de hallazgo DR-001 · warn · fila 3 · phase con found, expected y fix; 6+5+4=15 coincide con la duración prevista; solo diferencias, sin dictamen">
 </picture>
 
 # dsh-drill-script-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
 ## Qué es
 
 `dsh-drill-script-check` lee un guion de simulacro de emergencia —la cabecera del simulacro más una fila por etapa— y comprueba la completitud y la aritmética de ese guion: que cada etapa registre su fase de simulacro o su contenido de guion, que nombre a un responsable de mando, que el nivel de respuesta proceda del vocabulario que usted configure, que una etapa con acción de guion enumere los recursos que necesita, que las duraciones de las etapas sumen la duración prevista del simulacro, que un punto clave declare su condición de juicio, que no se repita ningún número de etapa y que la cabecera nombre el simulacro y la entidad organizadora. Devuelve una lista de «qué fila, qué columna, qué falta y cómo corregirlo»: cada hallazgo lleva `ruleId`, `locator` (fila y campo), `found`, `expected` y `fix`. Una lista vacía no significa «todo correcto»: toda comprobación que no pudo ejecutarse se informa en `skipped` con su motivo.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-drill-script-check: las ocho reglas DR-001…DR-008 como columnas, cada una con su check.kind y un punto de estado de una ejecución de ejemplo, y once campos como filas: ocho campos de etapa más tres campos de cabecera tras una banda HEADER. Un punto relleno indica que la regla lee ese campo en cada fila; un anillo marca el campo disparador de DR-004, script; sigma e igual marcan que DR-005 suma los minutos de las etapas y los compara con el total de la cabecera. El material y el paquete de reglas confluyen en drill_script_check; las tres salidas inferiores son issues[] con fila y campo, skipped[] con motivos, y summary. Una lista issues vacía no significa que todo esté bien.">
+</picture>
 
 Prueba de un minuto (usa el ejemplo incluido, sin instalar nada):
 
@@ -327,7 +332,7 @@ El plugin es **solo datos**: `src/model.ts` declara la forma de la tabla y el co
 | `samples/quickstart/` | La muestra de prueba de un minuto y su salida esperada |
 | `scripts/` | Puertas mecánicas y generación de recursos del README |
 
-Imágenes del README: `docs/assets/dsh-drill-script-check-flow-{light,dark}.svg` se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; el script aborta ruidosamente si no encuentra una fuente CJK). El diagrama solo contiene tokens de comandos, así que los cinco idiomas lo comparten:
+Imágenes del README: `docs/assets/dsh-drill-script-check-hero-{zh,en}-{light,dark}.webp` y `docs/assets/dsh-drill-script-check-flow-v5-{light,dark}.svg` se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow dibuja el hero localizado y un SVG escrito a mano dibuja la matriz regla × campo). El diagrama solo contiene tokens de comandos, identificadores de reglas y campos, y notas breves en inglés, así que los cinco idiomas lo comparten:
 
 ```sh
 python scripts/gen-readme-assets.py

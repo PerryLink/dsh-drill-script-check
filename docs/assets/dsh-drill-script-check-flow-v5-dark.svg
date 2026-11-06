@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="t d">
+<title id="t">dsh-drill-script-check — rule x field matrix</title>
+<desc id="d">Eight rules (DR-001 to DR-008) as columns and eleven material fields as rows; a dot marks a field a rule reads, a ring the trigger field of DR-004, sigma and equals the row sum DR-005 compares with the header total. Material and rule pack converge on drill_script_check above the matrix; issues, skipped and summary are the report exits below it.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131a2a"/><stop offset="1" stop-color="#0c1016"/></linearGradient>
+</defs>
+<rect width="1100" height="660" rx="20" fill="url(#bg)"/>
+<rect x="0.5" y="0.5" width="1099" height="659" rx="20" fill="none" stroke="#2e374b"/>
+<text x="40" y="44" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="700" text-anchor="start" letter-spacing="1.6">STRUCTURE · RULE × FIELD</text>
+<text x="40" y="76" fill="#f0f3f9" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="20" font-weight="700" text-anchor="start">Each rule reads only the fields it declares</text>
+<text x="40" y="99" fill="#a8b1c4" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">drill_script_check · material JSON / YAML (rows[] + header) × rules/*.yaml (8 rules, 2026.1)</text>
+<rect x="40" y="110" width="276" height="56" rx="12" fill="#1b2231" stroke="#2e374b" stroke-width="1.2"/>
+<text x="56" y="132" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="12.5" font-weight="700" text-anchor="start">MATERIAL · JSON / YAML</text>
+<text x="56" y="152" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">aliases folded · rows[] + header</text>
+<rect x="400" y="104" width="300" height="64" rx="14" fill="#1b2231" stroke="#8496f5" stroke-width="1.6"/>
+<text x="550" y="134" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="15" font-weight="700" text-anchor="middle">drill_script_check</text>
+<text x="550" y="154" fill="#a8b1c4" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">parseTable → canonical rows → runTableCheck</text>
+<rect x="784" y="110" width="276" height="56" rx="12" fill="#1b2231" stroke="#2e374b" stroke-width="1.2"/>
+<text x="800" y="132" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="12.5" font-weight="700" text-anchor="start">RULE PACK · rules/*.yaml</text>
+<text x="800" y="152" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">8 rules · version 2026.1</text>
+<line x1="316" y1="138" x2="398" y2="138" stroke="#737b8d" stroke-width="1.6"/>
+<path d="M392 133L398 138L392 143" fill="none" stroke="#737b8d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="784" y1="138" x2="702" y2="138" stroke="#737b8d" stroke-width="1.6"/>
+<path d="M708 133L702 138L708 143" fill="none" stroke="#737b8d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="550" y1="168" x2="550" y2="176" stroke="#737b8d" stroke-width="1.6"/>
+<path d="M545 170L550 176L555 170" fill="none" stroke="#737b8d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="40" y="180" width="1020" height="60" rx="12" fill="#202839"/>
+<text x="56" y="204" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">field \ rule</text>
+<text x="56" y="222" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">8 step + 3 header fields</text>
+<circle cx="274" cy="200" r="3.8" fill="#d9a441"/>
+<text x="308" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-001</text>
+<text x="308" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">presenceAny</text>
+<circle cx="371" cy="200" r="3.8" fill="#3fb950"/>
+<text x="405" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-002</text>
+<text x="405" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">presence</text>
+<circle cx="470" cy="200" r="3.8" fill="#737b8d"/>
+<text x="504" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-003</text>
+<text x="504" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">enum</text>
+<circle cx="574" cy="200" r="3.8" fill="#3fb950"/>
+<text x="608" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-004</text>
+<text x="608" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">conditional</text>
+<text x="608" y="236" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">Presence</text>
+<circle cx="676" cy="200" r="3.8" fill="#3fb950"/>
+<text x="710" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-005</text>
+<text x="710" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">sum</text>
+<circle cx="772" cy="200" r="3.8" fill="#3fb950"/>
+<text x="806" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-006</text>
+<text x="806" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">presence</text>
+<circle cx="870" cy="200" r="3.8" fill="#3fb950"/>
+<text x="904" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-007</text>
+<text x="904" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">unique</text>
+<circle cx="973" cy="200" r="3.8" fill="#3fb950"/>
+<text x="1007" y="205" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13.5" font-weight="700" text-anchor="middle">DR-008</text>
+<text x="1007" y="225" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">headerPresence</text>
+<line x1="40" y1="240" x2="1060" y2="240" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="262" x2="1060" y2="262" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="284" x2="1060" y2="284" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="306" x2="1060" y2="306" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="328" x2="1060" y2="328" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="350" x2="1060" y2="350" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="372" x2="1060" y2="372" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="394" x2="1060" y2="394" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="416" x2="1060" y2="416" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="434" x2="1060" y2="434" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="456" x2="1060" y2="456" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="478" x2="1060" y2="478" stroke="#262f42" stroke-width="1"/>
+<line x1="40" y1="500" x2="1060" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="260" y1="240" x2="260" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="356" y1="240" x2="356" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="454" y1="240" x2="454" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="554" y1="240" x2="554" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="662" y1="240" x2="662" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="758" y1="240" x2="758" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="854" y1="240" x2="854" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="954" y1="240" x2="954" y2="500" stroke="#262f42" stroke-width="1"/>
+<line x1="260" y1="240" x2="260" y2="500" stroke="#262f42" stroke-width="1"/>
+<rect x="40" y="416" width="1020" height="18" rx="0" fill="#202839"/>
+<text x="56" y="429" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">HEADER · stated once per material</text>
+<text x="56" y="255.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">stepNo</text>
+<circle cx="308" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="251" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="251" r="5.2" fill="#8496f5"/>
+<circle cx="1007" cy="251" r="2.2" fill="#262f42"/>
+<text x="56" y="277.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">phase</text>
+<circle cx="308" cy="273" r="5.2" fill="#8496f5"/>
+<circle cx="405" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="273" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="273" r="2.2" fill="#262f42"/>
+<text x="56" y="299.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">script</text>
+<circle cx="308" cy="295" r="5.2" fill="#8496f5"/>
+<circle cx="405" cy="295" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="295" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="295" r="5.4" fill="#1b2231" stroke="#8496f5" stroke-width="2.2"/>
+<circle cx="710" cy="295" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="295" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="295" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="295" r="2.2" fill="#262f42"/>
+<text x="56" y="321.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">commander</text>
+<circle cx="308" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="317" r="5.2" fill="#8496f5"/>
+<circle cx="504" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="317" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="317" r="2.2" fill="#262f42"/>
+<text x="56" y="343.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">resource</text>
+<circle cx="308" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="339" r="5.2" fill="#8496f5"/>
+<circle cx="710" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="339" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="339" r="2.2" fill="#262f42"/>
+<text x="56" y="365.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">durationMin</text>
+<circle cx="308" cy="361" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="361" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="361" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="361" r="2.2" fill="#262f42"/>
+<text x="710" y="365.5" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="middle">Σ</text>
+<circle cx="806" cy="361" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="361" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="361" r="2.2" fill="#262f42"/>
+<text x="56" y="387.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">level</text>
+<circle cx="308" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="383" r="5.2" fill="#8496f5"/>
+<circle cx="608" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="383" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="383" r="2.2" fill="#262f42"/>
+<text x="56" y="409.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">checkpoint</text>
+<circle cx="308" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="405" r="5.2" fill="#8496f5"/>
+<circle cx="904" cy="405" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="405" r="2.2" fill="#262f42"/>
+<text x="56" y="449.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">drillName</text>
+<circle cx="308" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="445" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="445" r="5.2" fill="#8496f5"/>
+<text x="56" y="471.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">organizer</text>
+<circle cx="308" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="710" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="806" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="467" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="467" r="5.2" fill="#8496f5"/>
+<text x="56" y="493.5" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="400" text-anchor="start">totalDurationMin</text>
+<circle cx="308" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="405" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="504" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="608" cy="489" r="2.2" fill="#262f42"/>
+<text x="710" y="493.5" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="middle">=</text>
+<circle cx="806" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="904" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="1007" cy="489" r="2.2" fill="#262f42"/>
+<circle cx="46" cy="517.5" r="5.2" fill="#8496f5"/>
+<text x="58" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">read on every row</text>
+<circle cx="196" cy="517.5" r="5.4" fill="#1b2231" stroke="#8496f5" stroke-width="2.2"/>
+<text x="208" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">trigger field</text>
+<text x="300" y="521" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">Σ</text>
+<text x="314" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">row sum = header total</text>
+<circle cx="474" cy="517.5" r="2.2" fill="#262f42"/>
+<text x="484" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">never read</text>
+<text x="566" y="521" fill="#737b8d" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="13" font-weight="400" text-anchor="start">·</text>
+<text x="580" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">state: one sample run —</text>
+<circle cx="736" cy="517.5" r="3.8" fill="#d9a441"/>
+<text x="746" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">finding</text>
+<circle cx="812" cy="517.5" r="3.8" fill="#737b8d"/>
+<text x="822" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">skipped</text>
+<circle cx="892" cy="517.5" r="3.8" fill="#3fb950"/>
+<text x="902" y="521" fill="#a8b1c4" font-family="'Microsoft YaHei','Segoe UI',ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="400" text-anchor="start">ran clean</text>
+<text x="40" y="538" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">evidence kind caps severity — direct → any · derived-from-principle ≤ warn (7) · institutional-configuration ≤ info (DR-003); no verbatim excerpt in this pack</text>
+<rect x="40" y="548" width="380" height="78" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.2"/>
+<text x="56" y="572" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">issues[]</text>
+<text x="123.36" y="572" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">1</text>
+<rect x="362.56" y="559" width="41.44" height="20" rx="10" fill="#2a2216"/>
+<text x="383.28" y="573" fill="#d9a441" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">warn</text>
+<text x="56" y="596" fill="#a8b1c4" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">DR-001 · row 3 · phase</text>
+<text x="56" y="614" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">found: phase — · script — → fix: fill either</text>
+<rect x="400" y="548" width="300" height="78" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.2"/>
+<text x="416" y="572" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">skipped[]</text>
+<text x="490.78" y="572" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">1</text>
+<rect x="623.48" y="559" width="60.52" height="20" rx="10" fill="#222a3a"/>
+<text x="653.74" y="573" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">not run</text>
+<text x="416" y="596" fill="#a8b1c4" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">DR-003 · values unset</text>
+<text x="416" y="614" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">reported, never passed silently</text>
+<rect x="720" y="548" width="340" height="78" rx="14" fill="#1b2231" stroke="#2e374b" stroke-width="1.2"/>
+<text x="736" y="572" fill="#f0f3f9" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">summary</text>
+<text x="795.94" y="572" fill="#8496f5" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="13" font-weight="700" text-anchor="start">8 rules</text>
+<rect x="983.48" y="559" width="60.52" height="20" rx="10" fill="#16281c"/>
+<text x="1013.74" y="573" fill="#3fb950" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="middle">0 error</text>
+<text x="736" y="596" fill="#a8b1c4" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">error 0 · warn 1 · info 0</text>
+<text x="736" y="614" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11.5" font-weight="400" text-anchor="start">empty issues ≠ all clear</text>
+<text x="40" y="644" fill="#737b8d" font-family="ui-monospace,Consolas,'Courier New',monospace" font-size="11" font-weight="400" text-anchor="start">a finding is one cell — row × field — and the matrix shows reads, not verdicts</text>
+</svg>

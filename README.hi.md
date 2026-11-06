@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-dark.svg">
-  <img src="docs/assets/dsh-drill-script-check-flow-light.svg" width="100%" alt="dsh-drill-script-check जाँच पाइपलाइन: JSON/YAML सामग्री → drill_script_check → नियम पैक DR-001…DR-008 → अंतर सूची (found/expected/fix) → रिपोर्ट (summary/skipped)">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-drill-script-check-hero-en-light.webp" width="100%" alt="dsh-drill-script-check बैनर: बाईं ओर प्लगइन का नाम और दो मूल्य-पंक्तियाँ; दाईं ओर एक अभ्यास स्क्रिप्ट (शीर्षक में अभ्यास नाम, आयोजक और नियोजित अवधि; तीन चरण, तीसरे में चरण और स्क्रिप्ट दोनों खाली और घेरे हुए) से निकलता निष्कर्ष कार्ड DR-001 · warn · पंक्ति 3 · phase, जिसमें found, expected और fix हैं; 6+5+4=15 नियोजित अवधि के बराबर; केवल अंतर, कोई निर्णय नहीं">
 </picture>
 
 # dsh-drill-script-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
 ## यह क्या है
 
 `dsh-drill-script-check` एक आपातकालीन अभ्यास स्क्रिप्ट पढ़ता है — अभ्यास हेडर और हर चरण की एक पंक्ति — और उसी स्क्रिप्ट की पूर्णता तथा अंकगणित की जाँच करता है: क्या हर चरण अपना अभ्यास चरण या स्क्रिप्ट सामग्री दर्ज करता है, क्या कमांडर का नाम देता है, क्या प्रतिक्रिया स्तर आपके कॉन्फ़िगर किए शब्दावली से आता है, क्या स्क्रिप्ट क्रिया वाला चरण आवश्यक संसाधन सूचीबद्ध करता है, क्या चरणों की अवधि अभ्यास की नियोजित अवधि के बराबर है, क्या मुख्य चौकी अपनी निर्णय-शर्त बताती है, क्या कोई चरण संख्या दोहराई नहीं गई, और क्या हेडर अभ्यास तथा आयोजक संस्था का नाम देता है। यह «कौन-सी पंक्ति, कौन-सा कॉलम, क्या कम है और कैसे ठीक करें» की सूची लौटाता है: हर अंतर में `ruleId`, `locator` (पंक्ति और फ़ील्ड), `found`, `expected` और `fix` होते हैं। खाली सूची का अर्थ «सब सही» नहीं है — जो जाँच नहीं चल सकी, वह कारण सहित `skipped` में दर्ज होती है।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="dsh-drill-script-check संरचना: आठ नियम DR-001…DR-008 स्तंभों में (हर एक का check.kind और एक नमूना-रन की स्थिति बिंदु), और ग्यारह फ़ील्ड पंक्तियों में — आठ चरण फ़ील्ड तथा HEADER पट्टी के पीछे तीन हेडर फ़ील्ड। भरा बिंदु अर्थ है कि नियम हर पंक्ति में वह फ़ील्ड पढ़ता है; छल्ला DR-004 का ट्रिगर फ़ील्ड script है; Σ और = दर्शाते हैं कि DR-005 चरणों के मिनट जोड़कर हेडर की कुल अवधि से तुलना करता है। सामग्री और नियम पैक drill_script_check पर मिलते हैं; नीचे तीन निर्गम हैं issues[] (पंक्ति और फ़ील्ड स्थान के साथ), skipped[] (कारण सहित) और summary; खाली issues का अर्थ सब ठीक नहीं">
+</picture>
 
 एक मिनट का परीक्षण (रेपो में शामिल नमूना, इंस्टॉल की ज़रूरत नहीं):
 
@@ -327,7 +332,7 @@ pnpm pack                                # प्रकाशित tarball
 | `samples/quickstart/` | एक मिनट का परीक्षण नमूना और अपेक्षित आउटपुट |
 | `scripts/` | यांत्रिक गेट और README चित्र निर्माण |
 
-README चित्र: `docs/assets/dsh-drill-script-check-flow-{light,dark}.svg` [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से प्रोग्रामेटिक रूप से बनते हैं (Python + Pillow; CJK फ़ॉन्ट न मिलने पर स्क्रिप्ट तुरंत त्रुटि देकर रुकती है)। चित्र में केवल कमांड token हैं, इसलिए पाँचों भाषाएँ इसे साझा करती हैं:
+README चित्र: `docs/assets/dsh-drill-script-check-hero-{zh,en}-{light,dark}.webp` और `docs/assets/dsh-drill-script-check-flow-v5-{light,dark}.svg` [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से प्रोग्रामेटिक रूप से बनते हैं (Pillow स्थानीयकृत hero बनाता है, हाथ से लिखा SVG नियम × फ़ील्ड मैट्रिक्स बनाता है)। संरचना चित्र में केवल कमांड token, नियम/फ़ील्ड पहचानकर्ता और छोटी अंग्रेज़ी टिप्पणियाँ हैं, इसलिए पाँचों भाषाएँ इसे साझा करती हैं:
 
 ```sh
 python scripts/gen-readme-assets.py

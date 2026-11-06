@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-dark.svg">
-  <img src="docs/assets/dsh-drill-script-check-flow-light.svg" width="100%" alt="dsh-drill-script-check 核对流程：JSON/YAML 材料 → drill_script_check → 规则包 DR-001…DR-008 → 差异清单（found/expected/fix）→ 报告（summary/skipped）">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-drill-script-check-hero-zh-light.webp" width="100%" alt="dsh-drill-script-check 横幅：左侧是插件名与两行价值说明；右侧是一张演练脚本（表头为演练名称、组织单位、计划总时长，三个环节各一行，第 3 行的演练阶段与脚本内容为空并被琥珀色圈出），引出一张判定卡 DR-001 · warn · 第 3 行 phase，逐行列出 found、expected、fix；6+5+4=15 表示计划时长合计与表头总时长一致；只列差异，不下合规结论">
 </picture>
 
 # dsh-drill-script-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
 ## 它是什么
 
 `dsh-drill-script-check` 读取一份应急演练脚本——演练表头加每个环节一行——核对这份脚本自身的齐备与算术：每个环节是否填写演练阶段或脚本内容、是否明确指挥人、响应级别是否取自你配置的口径、有脚本动作的环节是否列明所需资源、各环节计划时长合计是否等于演练总时长、关键节点是否写明判定条件、环节序号是否重复、表头是否声明演练名称与组织单位。它返回一份「哪一行、哪一栏、差什么、怎么补」的清单：每条发现都带 `ruleId`、`locator`（行与字段）、`found`、`expected`、`fix`。空清单不等于「全部正确」——无法执行的规则会逐条写进 `skipped` 并说明原因。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="dsh-drill-script-check 结构图：八条规则 DR-001…DR-008 作列（各标 check.kind 与一次示例运行的状态点），十一个字段作行（八个环节字段加表头三项，中间以 HEADER 带分隔）；实心点表示该规则逐行读这一栏，圆环表示 DR-004 的触发栏 script，Σ 与 = 表示 DR-005 用环节计划时长合计比对表头总时长；材料与规则包两路汇入 drill_script_check，下方三个出口是 issues[]（带 row/field 定位）、skipped[]（未执行附原因）与 summary；空 issues 不等于全部正确">
+</picture>
 
 一分钟试跑（用仓内样例，不需要先安装）：
 
@@ -327,7 +332,7 @@ pnpm pack                                # 发布 tarball
 | `samples/quickstart/` | 一分钟试跑样例与期望输出 |
 | `scripts/` | 门禁脚本与配图生成 |
 
-配图复跑：`docs/assets/dsh-drill-script-check-flow-{light,dark}.svg` 由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow；CJK 字体探测缺失即报错退出）。图内只放命令 token，五语共用：
+配图复跑：`docs/assets/dsh-drill-script-check-hero-{zh,en}-{light,dark}.webp` 与 `docs/assets/dsh-drill-script-check-flow-v5-{light,dark}.svg` 均由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 画按语言本地化的 hero，手写 SVG 画规则×字段矩阵）；结构图只放命令面 token、规则/字段标识与简短英文注记，五语共用：
 
 ```sh
 python scripts/gen-readme-assets.py

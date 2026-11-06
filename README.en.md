@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-dark.svg">
-  <img src="docs/assets/dsh-drill-script-check-flow-light.svg" width="100%" alt="dsh-drill-script-check pipeline: JSON/YAML material → drill_script_check → rule pack DR-001…DR-008 → findings (found/expected/fix) → report (summary/skipped)">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-hero-en-dark.webp">
+  <img src="docs/assets/dsh-drill-script-check-hero-en-light.webp" width="100%" alt="dsh-drill-script-check banner: left, the plugin name and two value lines; right, one drill script sheet (header with drill, organiser and planned total; three steps, the third missing both phase and script, the two cells ringed) leading to a finding card DR-001 · warn · row 3 · phase with found, expected and fix; 6+5+4=15 matches the planned total; differences only, no verdict">
 </picture>
 
 # dsh-drill-script-check
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
 ## What it is
 
 `dsh-drill-script-check` reads one emergency drill script — the drill header plus one row per step — and checks that script's own completeness and arithmetic: that each step records its drill phase or its script content, that it names a commander, that the response level comes from the vocabulary you configure, that a step with a script action lists the resources it needs, that the step durations total the drill's planned duration, that a key checkpoint states its judgement condition, that no step number is repeated, and that the header names the drill and the organising unit. It returns a list of “which row, which column, what is off, and how to fix it”: every finding carries a `ruleId`, a `locator` (row and field), `found`, `expected`, and `fix`. An empty list does not mean “all correct” — every check that could not run is reported in `skipped` with its reason.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-drill-script-check-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="dsh-drill-script-check structure: the eight rules DR-001…DR-008 as columns, each with its check.kind and one sample-run state dot, and eleven fields as rows — eight step fields plus three header fields behind a HEADER band. A filled dot means the rule reads that field on every row; a ring marks DR-004's trigger field script; sigma and equals mark DR-005 summing the step minutes against the header total. Material and rule pack converge on drill_script_check; the three exits below are issues[] with row and field locators, skipped[] with reasons, and summary. An empty issues list is not all clear.">
+</picture>
 
 A one-minute trial (uses the bundled sample, no install needed):
 
@@ -327,7 +332,7 @@ The plugin is **data-only**: `src/model.ts` declares the table shape and materia
 | `samples/quickstart/` | The one-minute trial sample and its expected output |
 | `scripts/` | Mechanical gates and README asset generation |
 
-README images: `docs/assets/dsh-drill-script-check-flow-{light,dark}.svg` are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; the script aborts loudly when no CJK font is found). The diagram carries command tokens only, so all five languages share it:
+README images: `docs/assets/dsh-drill-script-check-hero-{zh,en}-{light,dark}.webp` and `docs/assets/dsh-drill-script-check-flow-v5-{light,dark}.svg` are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow draws the localized hero, a hand-written SVG draws the rule × field matrix). The structure diagram carries command-surface tokens, rule and field identifiers, and short English notes only, so all five languages share it:
 
 ```sh
 python scripts/gen-readme-assets.py
