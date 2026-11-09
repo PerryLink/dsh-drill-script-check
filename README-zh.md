@@ -1,6 +1,6 @@
 # dsh-drill-script-check — 应急演练脚本核对
 
-## 快速试跑（1 分钟）
+### 快速试跑（1 分钟）
 
 ```bash
 node samples/quickstart/run.mjs --check
@@ -9,7 +9,7 @@ node samples/quickstart/run.mjs --check
 样例在 `samples/quickstart/input/`，期望输出在 `samples/quickstart/expected/result.json`；截图见 `docs/assets/quickstart.png`。
 
 
-[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+[English](README.md) · [简体中文](README-zh.md)
 
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 [![dshfind](https://dshfind.com/api/badge/PerryLink/dsh-drill-script-check?metric=downloads)](https://dshfind.com/en/plugins/PerryLink/dsh-drill-script-check?ref=badge)
