@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
   <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="dsh-drill-script-check संरचना: आठ नियम DR-001…DR-008 स्तंभों में (हर एक का check.kind और एक नमूना-रन की स्थिति बिंदु), और ग्यारह फ़ील्ड पंक्तियों में — आठ चरण फ़ील्ड तथा HEADER पट्टी के पीछे तीन हेडर फ़ील्ड। भरा बिंदु अर्थ है कि नियम हर पंक्ति में वह फ़ील्ड पढ़ता है; छल्ला DR-004 का ट्रिगर फ़ील्ड script है; Σ और = दर्शाते हैं कि DR-005 चरणों के मिनट जोड़कर हेडर की कुल अवधि से तुलना करता है। सामग्री और नियम पैक drill_script_check पर मिलते हैं; नीचे तीन निर्गम हैं issues[] (पंक्ति और फ़ील्ड स्थान के साथ), skipped[] (कारण सहित) और summary; खाली issues का अर्थ सब ठीक नहीं">
 </picture>
 
+![dsh-drill-script-check का असली टर्मिनल रन](docs/assets/dsh-drill-script-check-demo.gif)
+
+*इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
+
+
 एक मिनट का परीक्षण (रेपो में शामिल नमूना, इंस्टॉल की ज़रूरत नहीं):
 
 ```sh

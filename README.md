@@ -36,6 +36,10 @@ dsh plugin --profile <name> add dsh-drill-script-check
 
 ## 它是什么
 
+![dsh-drill-script-check 真实终端运行](docs/assets/dsh-drill-script-check-demo.gif)
+
+*本仓库一次真实运行的动图回放。*
+
 `dsh-drill-script-check` 读取一份应急演练脚本——演练表头加每个环节一行——核对这份脚本自身的齐备与算术：每个环节是否填写演练阶段或脚本内容、是否明确指挥人、响应级别是否取自你配置的口径、有脚本动作的环节是否列明所需资源、各环节计划时长合计是否等于演练总时长、关键节点是否写明判定条件、环节序号是否重复、表头是否声明演练名称与组织单位。它返回一份「哪一行、哪一栏、差什么、怎么补」的清单：每条发现都带 `ruleId`、`locator`（行与字段）、`found`、`expected`、`fix`。空清单不等于「全部正确」——无法执行的规则会逐条写进 `skipped` 并说明原因。
 
 <picture>

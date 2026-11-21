@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-drill-script-check
   <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="Estructura de dsh-drill-script-check: las ocho reglas DR-001…DR-008 como columnas, cada una con su check.kind y un punto de estado de una ejecución de ejemplo, y once campos como filas: ocho campos de etapa más tres campos de cabecera tras una banda HEADER. Un punto relleno indica que la regla lee ese campo en cada fila; un anillo marca el campo disparador de DR-004, script; sigma e igual marcan que DR-005 suma los minutos de las etapas y los compara con el total de la cabecera. El material y el paquete de reglas confluyen en drill_script_check; las tres salidas inferiores son issues[] con fila y campo, skipped[] con motivos, y summary. Una lista issues vacía no significa que todo esté bien.">
 </picture>
 
+![dsh-drill-script-check: ejecución real de terminal](docs/assets/dsh-drill-script-check-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 Prueba de un minuto (usa el ejemplo incluido, sin instalar nada):
 
 ```sh

@@ -138,6 +138,10 @@ rows:
 
 ### Examples
 
+![dsh-drill-script-check: real terminal run](docs/assets/dsh-drill-script-check-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
 **Tool** `drill_script_check`
 
 **Input**

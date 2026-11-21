@@ -43,6 +43,11 @@ O `dsh-drill-script-check` lê um guião de simulacro de emergência — o cabe�
   <img src="docs/assets/dsh-drill-script-check-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-drill-script-check: as oito regras DR-001…DR-008 como colunas, cada uma com o seu check.kind e um ponto de estado de uma execução de exemplo, e onze campos como linhas — oito campos de etapa mais três campos de cabeçalho atrás de uma faixa HEADER. Um ponto cheio indica que a regra lê esse campo em cada linha; um anel marca o campo de disparo de DR-004, script; sigma e igual marcam que DR-005 soma os minutos das etapas e compara com o total do cabeçalho. O material e o pacote de regras convergem em drill_script_check; as três saídas abaixo são issues[] com linha e campo, skipped[] com motivos, e summary. Uma lista issues vazia não significa que está tudo certo.">
 </picture>
 
+![dsh-drill-script-check: execução real de terminal](docs/assets/dsh-drill-script-check-demo.gif)
+
+*Repetição animada de uma execução real registrada neste repositório.*
+
+
 Teste de um minuto (usa a amostra incluída, sem instalar nada):
 
 ```sh
