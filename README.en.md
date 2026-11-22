@@ -7,6 +7,8 @@
 
 # dsh-drill-script-check
 
+Current version `0.2.13`.
+
 **Turn one emergency drill script into a difference list — which row, which column, what is off, and how to fix it.**
 
 A DeepSeek Harness checker for safety and emergency managers: it reads the drill header plus one row per step and checks that script's own completeness and arithmetic. It lists only differences it can point to inside the material — no compliance verdict, no liability finding.
